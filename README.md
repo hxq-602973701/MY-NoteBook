@@ -4,4 +4,4 @@
 * 顺便体验下readme.md文件
 * 2018/07/06开始.....
   * 一张图片表达下心情吧
-  ![baidu](http://www.baidu.com/img/bdlogo.gif "百度logo")  
+  ![LZ](https://github.com/hxq-602973701/my-notepad/blob/master/17494796_980x1200_0.jpg "老詹logo")  
