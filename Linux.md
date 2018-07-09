@@ -11,3 +11,4 @@
   * 停止es：kill -9 进程号
   * 后台启动es：./elasticsearch -d
   * 安装Kibana 后启动方式 nohup  ./kibana > /nohub.out &  （可关闭终端，在nohup.out中查看log）
+  * 更改文件以及子文件所属用户  chown -R user:user 文件夹路径
