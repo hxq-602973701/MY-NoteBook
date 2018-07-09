@@ -10,3 +10,4 @@
   * 查看es是否启动：ps -aux| grep elasticsearch
   * 停止es：kill -9 进程号
   * 后台启动es：./elasticsearch -d
+  * 安装Kibana 后启动方式 nohup  ./kibana > /nohub.out &  （可关闭终端，在nohup.out中查看log）
