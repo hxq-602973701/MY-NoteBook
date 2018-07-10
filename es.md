@@ -1,3 +1,4 @@
+[es中文文档](https://github.com/13428282016/elasticsearch-CN/wiki/es-gettting-started)
 ```java
 这是一些es操作的基本命令
 
