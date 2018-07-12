@@ -3,10 +3,10 @@
 * 首先安装logstash6.3.1 和 logstash-input-jdbc4.3.9
   * 测试有没有安装成功
   ```sh
-cd bin
-./logstash -e 'input { stdin { } } output { stdout {} }'
-  * 然后
-  ```sh
+	cd bin
+	./logstash -e 'input { stdin { } } output { stdout {} }'
+ * 然后
+ ```sh
   gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/<br>
   * 然后
   ```sh
