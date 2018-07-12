@@ -7,16 +7,16 @@
 	./logstash -e 'input { stdin { } } output { stdout {} }'
  * 然后
  ```sh
-  gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/<br>
+  gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
   * 然后
-  ```sh
-  gem sources -l<br>
-  * 然后进入logstash-6.3.1，修改Gemfile文件里面的数据源<br>
-  ```
+   ```sh
+  gem sources -l
+  * 然后进入logstash-6.3.1，修改Gemfile文件里面的数据源
+ ```sh
   vi Gemfile
   source "https://gems.ruby-china.org"
-  * 然后进入 logstash-input-jdbc4.3.9 下
-  ```sh
+ * 然后进入 logstash-input-jdbc4.3.9 下
+ ```sh
   gem build logstash-input-jdbc.gemspec
   * 然后进入logstash-6.3.1/bin 下
   ```sh
