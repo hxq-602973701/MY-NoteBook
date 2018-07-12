@@ -1,22 +1,32 @@
 #### linux上安装 logstash6.3.1 以及logstash-input-jdbc4.3.9 实现增量索引
-
+* [linux上安装 logstash6.3.1 以及logstash-input-jdbc4.3.9 实现增量索引](https://blog.csdn.net/q15150676766/article/details/75949679)
 * 首先安装logstash6.3.1 和 logstash-input-jdbc4.3.9
   * 测试有没有安装成功
   ```sh
 	cd bin
 	./logstash -e 'input { stdin { } } output { stdout {} }'
  * 然后
+ 
  ```sh
   gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
+  
   然后
+  
   gem sources -l
+  
   然后进入logstash-6.3.1，修改Gemfile文件里面的数据源
+  
   vi Gemfile
   source "https://gems.ruby-china.org"
- 然后进入 logstash-input-jdbc4.3.9 下
+  
+  然后进入 logstash-input-jdbc4.3.9 下
+ 
   gem build logstash-input-jdbc.gemspec
+  
   然后进入logstash-6.3.1/bin 下
+  
   bin/plugin install /your/local/plugin/logstash-input-jdbc.gem
+  
   然后看是否成功 如果成功了  在bin目录下创建一个conf文件内容如下:
   input {
 	  jdbc {
@@ -45,9 +55,7 @@
 	    index => "myindex"
 	  }
 	}
-  * 然后启动就可以测试了
-  ```sh
+	
+   然后启动就可以测试了
+  
   ./logstash -f config-mysql/mysql.conf 
-  
-    * [linux上安装 logstash6.3.1 以及logstash-input-jdbc4.3.9 实现增量索引](https://blog.csdn.net/q15150676766/article/details/75949679)
-  
