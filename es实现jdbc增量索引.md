@@ -8,21 +8,16 @@
  * 然后
  ```sh
   gem sources --add https://gems.ruby-china.org/ --remove https://rubygems.org/
-  * 然后
-   ```sh
+  然后
   gem sources -l
-  * 然后进入logstash-6.3.1，修改Gemfile文件里面的数据源
- ```sh
+  然后进入logstash-6.3.1，修改Gemfile文件里面的数据源
   vi Gemfile
   source "https://gems.ruby-china.org"
- * 然后进入 logstash-input-jdbc4.3.9 下
- ```sh
+ 然后进入 logstash-input-jdbc4.3.9 下
   gem build logstash-input-jdbc.gemspec
-  * 然后进入logstash-6.3.1/bin 下
-  ```sh
+  然后进入logstash-6.3.1/bin 下
   bin/plugin install /your/local/plugin/logstash-input-jdbc.gem
-  * 然后看是否成功 如果成功了  在bin目录下创建一个conf文件内容如下:
-  ```sh
+  然后看是否成功 如果成功了  在bin目录下创建一个conf文件内容如下:
   input {
 	  jdbc {
 	    jdbc_driver_library => "/path/to/mysql-connector-java-5.1.33-bin.jar"
