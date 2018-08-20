@@ -12,3 +12,7 @@
   * 后台启动es：./elasticsearch -d
   * 安装Kibana 后启动方式 nohup  ./kibana > /nohub.out &  （可关闭终端，在nohup.out中查看log）
   * 更改文件以及子文件所属用户  chown -R user:user 文件夹路径
+*  mogo
+ * 关闭 ./mongod -shutdown -dbpath=/usr/local/share/mongodb/data
+
+ * 开启 ./mongod -f /usr/local/share/mongodb/etc/mongo.conf
