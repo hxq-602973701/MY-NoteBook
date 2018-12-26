@@ -16,3 +16,4 @@
  * 关闭 ./mongod -shutdown -dbpath=/usr/local/share/mongodb/data
 
  * 开启 ./mongod -f /usr/local/share/mongodb/etc/mongo.conf
+ * 查询某时间段的文件  find . -type f -newermt '2018-12-03 00:00:00' ! -newermt '2018-12-27 00:00:00'
