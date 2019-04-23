@@ -7,6 +7,8 @@
   
 * [linux上安装java](http://www.cnblogs.com/xuliangxing/p/7066913.html)
 * [linux上安装es](https://www.jianshu.com/p/975326e65f65)
+sudo useradd es  新增用户
+chown -R es:es file 更改文件目录权限
   * 查看es是否启动：ps -aux| grep elasticsearch
   * 停止es：kill -9 进程号
   * 后台启动es：./elasticsearch -d
