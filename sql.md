@@ -87,4 +87,4 @@ WHERE
 	DEL_FLAG = 0
 AND DEPT_TYPE = 25002
 ```
-mysql的需要一张表配合使用qzq_jqfx_calendar
+mysql的需要一张表配合使用calendar
