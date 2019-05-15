@@ -24,10 +24,7 @@ SELECT
         dual CONNECT BY LEVEL  &lt;= 12
         ) D2,
         S_DEPT D3
-        WHERE
-        D3.DEPT_PARENT_ID = 2
-
-        AND D3.DEPT_TYPE != 256
+       
 ```
 ## mysql 
 ```sql
@@ -64,7 +61,7 @@ FROM
 								INTERVAL 7 DAY
 							)
 					) r,
-					qzq_jqfx_calendar
+					calendar
 				WHERE
 					@rownum2 >= DATE_ADD(
 						DATE_FORMAT(
@@ -85,6 +82,5 @@ FROM
 	s_dept
 WHERE
 	DEL_FLAG = 0
-AND DEPT_TYPE = 25002
 ```
 mysql的需要一张表配合使用calendar
