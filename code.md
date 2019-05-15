@@ -1,4 +1,4 @@
-
+```java
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
@@ -364,7 +364,7 @@ public class RedPaperServiceImpl {
                                 // 将状态改为发送失败
                                 redPaper.setResultStatus(RedPacketConstant.SENT_FAIL);
                                 redPaper.setRedPacketReason(packetResult);
-                                // 推送到内网
+                                // 推送到
                                 pushRedPaper(redPaper);
                             }
                         } else {
@@ -381,7 +381,7 @@ public class RedPaperServiceImpl {
                                 redPaper.setResultStatus(RedPacketConstant.SENT_FAIL);
                                 redPaper.setRedPacketReason(packetResult);
                             }
-                            // 推送到内网
+                            // 推送到
                             pushRedPaper(redPaper);
                         }
                         redPaperDAO.updateByPrimaryKeySelective(redPaper);
@@ -397,7 +397,7 @@ public class RedPaperServiceImpl {
                         redPaper.setResultStatus(RedPacketConstant.SENT_FAIL);
                         redPaper.setRedPacketReason(packetResult);
                     }
-                    // 推送到内网
+                    // 推送到
                     pushRedPaper(redPaper);
                     redPaperDAO.updateByPrimaryKeySelective(redPaper);
                 }
@@ -408,7 +408,7 @@ public class RedPaperServiceImpl {
             // 将状态改为发送失败
             redPaper.setResultStatus(RedPacketConstant.SENT_FAIL);
             redPaper.setRedPacketReason(RedPacketConstant.ILLEGAL);
-            // 推送到内网
+            // 推送到内
             pushRedPaper(redPaper);
             redPaperDAO.updateByPrimaryKeySelective(redPaper);
         }
@@ -674,12 +674,12 @@ public class RedPaperServiceImpl {
 
 
     /**
-     * 将红包数据推送到内网
+     * 将红包数据推送到
      *
      * @return
      */
     public void pushRedPaper(RedPaper redPaper) {
-        logger.info("开始推送内网数据到外网");
+        logger.info("开始推送内数据到外");
 
         //设置请求头
         final Map<String, String> headerMap = Maps.newHashMap();
@@ -709,5 +709,29 @@ public class RedPaperServiceImpl {
         }
 
     }
+   
+        List<Menu> treeList = menuList.stream().filter(i -> Ids.compare(i.getMenuParentId(), TOP_LEVEL_NUM) == 0).collect(Collectors.toList());
+        treeList.forEach(m -> builderHierarchy(m, menuListByAuth));
+        
+        /**
+     * 构建菜单的子菜单列表
+     *
+     * @param m    当前菜单
+     * @param list 菜单列表
+     * @return
+     */
+    private Menu builderHierarchy(Menu m, List<Menu> list) {
+        Assert.notNull(m, "m can not be null");
+        Assert.notNull(list, "list can not be null");
 
+        list.stream()
+                .filter(i -> Ids.eq(i.getMenuParentId(), m.getMenuId()))
+                .forEach(i -> {
+                    if (m.getMenuList() == null) {
+                        m.setMenuList(Lists.newLinkedList());
+                    }
+                    m.getMenuList().add(builderHierarchy(i, list));
+                });
+        return m;
+    }
 }
