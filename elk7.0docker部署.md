@@ -1,8 +1,8 @@
 
 #elasticsearch 部署：
-# 需要挂载的目录：elasticsearch.yml、logs
+# 需要挂载的目录：elasticsearch.yml、logs、log4j2.properties
 # 注意:要将elasticsearch.yml中的elasticsearch.hosts 节点中的localhost改为服务器ip
-```ssh
+
 docker run --detach \
            --name es \
            --restart always \
@@ -12,12 +12,13 @@ docker run --detach \
            --network docker-node-02 \
            --network-alias es \
            --volume /opt/volume/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml \
+           --volume /opt/volume/elasticsearch/config/log4j2.properties:/usr/share/elasticsearch/config/log4j2.properties \
            --volume /opt/volume/elasticsearch/logs:/usr/share/elasticsearch/logs \
            docker.elastic.co/elasticsearch/elasticsearch:7.0.1 \
 
 
 # logstash 部署：
-# 需要挂载的目录：pipelines.yml 、config-orcal 、logs
+# 需要挂载的目录：pipelines.yml 、log4j2.properties、config-orcal 、logs
 # 1、复制DockerFile到任意目录
 # 2、运行docker build -t my-logstash .
 # 3、建立/opt/volume/logstash/config/pipelines.yml   /opt/volume/logstash/config-orcal   /opt/volume/logstash/logs
@@ -30,13 +31,14 @@ docker run --detach \
            --network docker-node-02 \
            --network-alias logstash \
            --volume /opt/volume/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml \
+           --volume /opt/volume/logstash/config/log4j2.properties:/usr/share/logstash/config/log4j2.properties \
            --volume /opt/volume/logstash/logs:/usr/share/logstash/logs \
            --volume /opt/volume/logstash/config-orcal:/usr/share/logstash/bin/config-orcal \
            my-logstash:latest \
 
 
 # kibana 部署：
-# 需要挂载的目录：kibana.yml 、logs
+# 需要挂载的目录：kibana.yml 、logs(在 kibana.yml中配置logs.dest)
 # 注意：要将kibana.yml 中的elasticsearch.hosts 节点改为服务器ip
             docker run --detach \
            --name kibana \
